@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.org.com.controllers.generals.JobsController">
+   <children>
+      <TableView fx:id="tableJobs" layoutX="35.0" layoutY="82.0" prefHeight="284.0" prefWidth="548.0">
+        <columns>
+          <TableColumn fx:id="code" prefWidth="80.0" text="Code" />
+          <TableColumn fx:id="name" prefWidth="200.0" text="Name" />
+          <TableColumn fx:id="desc" prefWidth="200.0" text="Description" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
