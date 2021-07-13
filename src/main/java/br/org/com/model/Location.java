@@ -1,10 +1,9 @@
-package br.org.com.model;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package br.org.com.model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,7 +32,7 @@ public class Location implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "street_address")
     private String streetAddress;
     @Column(name = "postal_code")
@@ -42,21 +41,21 @@ public class Location implements Serializable {
     private String city;
     @Column(name = "state_province")
     private String stateProvince;
-    @OneToMany(mappedBy = "regionId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationId")
     private List<Peoples> peoplesList;
 
     public Location() {
     }
 
-    public Location(Long id) {
+    public Location(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -127,4 +126,3 @@ public class Location implements Serializable {
     }
 
 }
-

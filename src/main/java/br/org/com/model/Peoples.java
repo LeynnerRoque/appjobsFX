@@ -1,15 +1,13 @@
-package br.org.com.model;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package br.org.com.model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 /**
  *
@@ -24,7 +22,6 @@ import java.math.BigInteger;
         , @NamedQuery(name = "Peoples.findByName", query = "SELECT p FROM Peoples p WHERE p.name = :name")
         , @NamedQuery(name = "Peoples.findByGender", query = "SELECT p FROM Peoples p WHERE p.gender = :gender")
         , @NamedQuery(name = "Peoples.findByAge", query = "SELECT p FROM Peoples p WHERE p.age = :age")
-        , @NamedQuery(name = "Peoples.findByIdentify", query = "SELECT p FROM Peoples p WHERE p.identify = :identify")
         , @NamedQuery(name = "Peoples.findByRegionName", query = "SELECT p FROM Peoples p WHERE p.regionName = :regionName")
         , @NamedQuery(name = "Peoples.findByEmail", query = "SELECT p FROM Peoples p WHERE p.email = :email")
         , @NamedQuery(name = "Peoples.findByPhone", query = "SELECT p FROM Peoples p WHERE p.phone = :phone")})
@@ -35,40 +32,38 @@ public class Peoples implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "gender")
     private String gender;
     @Column(name = "age")
     private Integer age;
-    @Column(name = "identify")
-    private BigInteger identify;
     @Column(name = "region_name")
     private String regionName;
     @Column(name = "email")
     private String email;
     @Column(name = "phone")
     private String phone;
-    @JoinColumn(name = "work_id", referencedColumnName = "id")
-    @ManyToOne
-    private Job workId;
-    @JoinColumn(name = "region_id", referencedColumnName = "id")
-    @ManyToOne
-    private Location regionId;
+    @JoinColumn(name = "job_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Job jobId;
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Location locationId;
 
     public Peoples() {
     }
 
-    public Peoples(Long id) {
+    public Peoples(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -96,14 +91,6 @@ public class Peoples implements Serializable {
         this.age = age;
     }
 
-    public BigInteger getIdentify() {
-        return identify;
-    }
-
-    public void setIdentify(BigInteger identify) {
-        this.identify = identify;
-    }
-
     public String getRegionName() {
         return regionName;
     }
@@ -128,20 +115,20 @@ public class Peoples implements Serializable {
         this.phone = phone;
     }
 
-    public Job getWorkId() {
-        return workId;
+    public Job getJobId() {
+        return jobId;
     }
 
-    public void setWorkId(Job workId) {
-        this.workId = workId;
+    public void setJobId(Job jobId) {
+        this.jobId = jobId;
     }
 
-    public Location getRegionId() {
-        return regionId;
+    public Location getLocationId() {
+        return locationId;
     }
 
-    public void setRegionId(Location regionId) {
-        this.regionId = regionId;
+    public void setLocationId(Location locationId) {
+        this.locationId = locationId;
     }
 
     @Override
@@ -170,4 +157,3 @@ public class Peoples implements Serializable {
     }
 
 }
-

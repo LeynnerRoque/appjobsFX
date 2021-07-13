@@ -1,15 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.org.com.model;
-
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 
-
-
+/**
+ *
+ * @author leynnerroque
+ */
 @Entity
 @Table(name = "enterprise")
 @XmlRootElement
@@ -18,8 +23,7 @@ import java.util.List;
         , @NamedQuery(name = "Enterprise.findById", query = "SELECT e FROM Enterprise e WHERE e.id = :id")
         , @NamedQuery(name = "Enterprise.findByFoundationName", query = "SELECT e FROM Enterprise e WHERE e.foundationName = :foundationName")
         , @NamedQuery(name = "Enterprise.findByEmail", query = "SELECT e FROM Enterprise e WHERE e.email = :email")
-        , @NamedQuery(name = "Enterprise.findByPhoneNumber", query = "SELECT e FROM Enterprise e WHERE e.phoneNumber = :phoneNumber")
-        , @NamedQuery(name = "Enterprise.findByIdentify", query = "SELECT e FROM Enterprise e WHERE e.identify = :identify")})
+        , @NamedQuery(name = "Enterprise.findByPhoneNumber", query = "SELECT e FROM Enterprise e WHERE e.phoneNumber = :phoneNumber")})
 public class Enterprise implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,30 +31,28 @@ public class Enterprise implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "foundation_name")
     private String foundationName;
     @Column(name = "email")
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "identify")
-    private BigInteger identify;
-    @OneToMany(mappedBy = "enterprisesId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "enterpriseId")
     private List<Job> jobList;
 
     public Enterprise() {
     }
 
-    public Enterprise(Long id) {
+    public Enterprise(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -76,14 +78,6 @@ public class Enterprise implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public BigInteger getIdentify() {
-        return identify;
-    }
-
-    public void setIdentify(BigInteger identify) {
-        this.identify = identify;
     }
 
     @XmlTransient
@@ -117,6 +111,7 @@ public class Enterprise implements Serializable {
 
     @Override
     public String toString() {
-        return "br.org.app.model.Enterprises[ id=" + id + " ]";
+        return "br.org.app.models.Enterprise[ id=" + id + " ]";
     }
+
 }
