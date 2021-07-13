@@ -5,12 +5,17 @@ import br.org.com.service.JobService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class JobsController implements Initializable {
@@ -30,6 +35,24 @@ public class JobsController implements Initializable {
     @FXML
     private  TableColumn desc;
 
+
+    @FXML
+    private void addNew(){
+        try {
+
+            Stage viewList = new Stage();
+            URL url = Paths.get("./src/main/java/br/org/com/views/forms/JobForms.fxml").toUri().toURL();
+
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            viewList.setTitle("ADD");
+            viewList.setScene(scene);
+            viewList.show();
+
+        }catch (Exception e){
+            System.out.println("Error on call page"+e.getMessage());
+        }
+    }
 
 
     @Override
