@@ -22,4 +22,8 @@ public class JobService {
     public List<Job> getAll(){
         return dao.getAll();
     }
+
+    public Job getByTitle(String name){
+        return dao.getByTitle(name) ;
+    }
 }

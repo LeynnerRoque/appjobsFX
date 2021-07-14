@@ -11,7 +11,7 @@ public class PeoplesService {
     public Boolean create(Peoples peoples){
         try {
             dao.create(peoples);
-            return false;
+            return true;
         }catch (Exception e){
             System.out.println("Error on create");
             return false;
