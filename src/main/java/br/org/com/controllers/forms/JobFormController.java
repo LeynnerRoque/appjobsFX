@@ -41,11 +41,19 @@ public class JobFormController implements Initializable {
     @FXML
     private void save(){
         try {
+        System.out.println(">>"+fieldEnterprise.getSelectionModel().getSelectedItem());
+        Enterprise enterprise = serviceEnterprise.getByfoundationName(
+                fieldEnterprise.getSelectionModel().getSelectedItem().toString());
+
+        System.out.println(">>"+enterprise.getId());
+
+
             Job job = new Job();
             job.setTitle(fieldTitle.getText());
             job.setDescription(fieldDescription.getText());
             double salario = Double.parseDouble(fieldSalary.getText());
             job.setSalary(salario);
+            job.setEnterpriseId(enterprise);
             service.create(job);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -54,7 +62,7 @@ public class JobFormController implements Initializable {
             alert.show();
 
         }catch (Exception e){
-
+            System.out.println("Erro>>"+e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Create Unsuccessful");
             alert.setContentText("Your Job not addicted");
