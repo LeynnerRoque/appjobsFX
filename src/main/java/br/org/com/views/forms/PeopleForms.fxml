@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <AnchorPane prefHeight="375.0" prefWidth="613.0" style="-fx-background-color: CORNFLOWERBLUE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.org.com.controllers.forms.PeopleFormController">
    <children>
       <Pane layoutX="21.0" layoutY="13.0" prefHeight="350.0" prefWidth="575.0" style="-fx-background-color: WHITE;">
@@ -29,7 +28,7 @@
             <Label layoutX="15.0" layoutY="257.0" text="Local:" />
             <ChoiceBox fx:id="comboLocal" layoutX="65.0" layoutY="253.0" prefHeight="25.0" prefWidth="453.0" />
             <Button layoutX="65.0" layoutY="297.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Save" textFill="#f5f2f2" />
-            <Button layoutX="306.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: RED;" text="Cancel" textFill="#f8f6f6" />
+            <Button fx:id="buttonCancel" layoutX="306.0" layoutY="297.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: RED;" text="Cancel" textFill="#f8f6f6" />
          </children>
       </Pane>
    </children>

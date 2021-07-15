@@ -8,10 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,6 +34,9 @@ public class JobFormController implements Initializable {
 
     @FXML
     private ChoiceBox fieldEnterprise;
+
+    @FXML
+    private Button buttonCancel;
 
 
     @FXML
@@ -69,6 +70,12 @@ public class JobFormController implements Initializable {
             alert.show();
 
         }
+    }
+
+    @FXML
+    private void cancel(){
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
     }
 
 

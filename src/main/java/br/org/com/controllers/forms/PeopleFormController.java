@@ -11,8 +11,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,6 +58,9 @@ public class PeopleFormController implements Initializable {
     @FXML
     private ChoiceBox comboLocal;
 
+    @FXML
+    private Button buttonCancel;
+
 
     public ObservableList<String> genders(){
         ArrayList<String> genders = new ArrayList<>();
@@ -95,6 +100,12 @@ public class PeopleFormController implements Initializable {
 
 
 
+    }
+
+    @FXML
+    private void cancel(){
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
     }
 
 

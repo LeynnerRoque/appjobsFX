@@ -6,7 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +26,10 @@ public class EnterpriseFormController implements Initializable {
 
     @FXML
     private TextField fieldPhone;
+
+    @FXML
+    private Button buttonCancel;
+
 
     @FXML
     private void create(){
@@ -57,6 +63,8 @@ public class EnterpriseFormController implements Initializable {
     @FXML
     private void cancel(ActionEvent event){
 
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
 
     }
 
