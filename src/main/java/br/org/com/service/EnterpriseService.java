@@ -26,4 +26,8 @@ public class EnterpriseService {
     public List<Enterprise> getAll(){
         return enterpriseDAO.getAll();
     }
+
+    public Enterprise getByfoundationName(String name){
+        return enterpriseDAO.getByFoundationName(name);
+    }
 }

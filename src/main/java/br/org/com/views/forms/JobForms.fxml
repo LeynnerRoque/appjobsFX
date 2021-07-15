@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: CORNFLOWERBLUE;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.org.com.controllers.forms.JobFormController">
    <children>
       <Pane layoutX="12.0" layoutY="17.0" prefHeight="362.0" prefWidth="575.0" style="-fx-background-color: WHITE;">
@@ -38,8 +37,8 @@
                </font>
             </Label>
             <ChoiceBox fx:id="fieldEnterprise" layoutX="102.0" layoutY="240.0" prefHeight="25.0" prefWidth="430.0" />
-            <Button layoutX="102.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Save" textFill="#fcf5f5" />
-            <Button layoutX="387.0" layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: RED;" text="Cancel" textFill="#fcfafa" />
+            <Button layoutX="102.0" layoutY="301.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: CORNFLOWERBLUE;" text="Save" textFill="#fcf5f5" />
+            <Button fx:id="buttonCancel" layoutX="387.0" layoutY="301.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: RED;" text="Cancel" textFill="#fcfafa" />
          </children>
       </Pane>
    </children>

@@ -8,10 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,15 +35,26 @@ public class JobFormController implements Initializable {
     @FXML
     private ChoiceBox fieldEnterprise;
 
+    @FXML
+    private Button buttonCancel;
+
 
     @FXML
     private void save(){
         try {
+        System.out.println(">>"+fieldEnterprise.getSelectionModel().getSelectedItem());
+        Enterprise enterprise = serviceEnterprise.getByfoundationName(
+                fieldEnterprise.getSelectionModel().getSelectedItem().toString());
+
+        System.out.println(">>"+enterprise.getId());
+
+
             Job job = new Job();
             job.setTitle(fieldTitle.getText());
             job.setDescription(fieldDescription.getText());
             double salario = Double.parseDouble(fieldSalary.getText());
             job.setSalary(salario);
+            job.setEnterpriseId(enterprise);
             service.create(job);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -54,13 +63,19 @@ public class JobFormController implements Initializable {
             alert.show();
 
         }catch (Exception e){
-
+            System.out.println("Erro>>"+e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Create Unsuccessful");
             alert.setContentText("Your Job not addicted");
             alert.show();
 
         }
+    }
+
+    @FXML
+    private void cancel(){
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
     }
 
 

@@ -2,6 +2,7 @@ package br.org.com.dao;
 
 import br.org.com.model.Job;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class JobDAO implements IDAO<Job> {
@@ -25,5 +26,12 @@ public class JobDAO implements IDAO<Job> {
     @Override
     public List<Job> getAll() {
         return dao.em.createQuery("SELECT j FROM Job j").getResultList();
+    }
+
+    public Job getByTitle(String title){
+        TypedQuery<Job> query = dao.em.createQuery("SELECT j FROM Job j WHERE j.title = '"+title+"'",Job.class);
+        Job job = query.getSingleResult();
+
+        return job;
     }
 }

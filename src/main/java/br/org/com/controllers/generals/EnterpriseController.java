@@ -62,7 +62,7 @@ public class EnterpriseController implements Initializable {
 
         for (int i = 0; i < service.getAll().size(); i++) {
 
-            tableEnterprise.getItems().add(service.getAll().get(i));
+            //tableEnterprise.getItems().add(service.getAll().get(i));
 
             code.setCellValueFactory( new PropertyValueFactory<Enterprise, String>("id"));
             name.setCellValueFactory( new PropertyValueFactory<Enterprise, String>("foundationName"));
