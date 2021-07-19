@@ -21,5 +21,10 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="buttonEdit" layoutX="77.0" layoutY="28.0" mnemonicParsing="false" onAction="#edit" prefHeight="33.0" prefWidth="35.0" style="-fx-background-color: ORANGE;" text="*" textFill="#f8f1f1">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

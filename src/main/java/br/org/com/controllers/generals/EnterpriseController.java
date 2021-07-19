@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,6 +39,9 @@ public class EnterpriseController implements Initializable {
     @FXML
     private TableColumn phone;
 
+    @FXML
+    private Button buttonEdit;
+
 
     @FXML
     private void add(){
@@ -54,6 +58,13 @@ public class EnterpriseController implements Initializable {
         }catch (Exception e){
             System.out.println("Error on call page"+e.getMessage());
         }
+    }
+
+    @FXML
+    private void edit(){
+        //System.out.println(tableEnterprise.getSelectionModel().getSelectedItem());
+        Enterprise e = (Enterprise) tableEnterprise.getSelectionModel().getSelectedItem();
+        System.out.println(e.getFoundationName());
     }
 
 
