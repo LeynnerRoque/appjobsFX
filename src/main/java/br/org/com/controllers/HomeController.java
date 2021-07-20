@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
@@ -70,6 +71,16 @@ public class HomeController implements Initializable {
         }catch (Exception e){
             System.out.println("Error on load objects"+e.getMessage());
         }
+    }
+
+    @FXML
+    private void openNet() throws IOException {
+
+        Runtime rt = Runtime.getRuntime();
+        String url = "http://google.com";
+        rt.exec("open " + url);
+
+
     }
 
 

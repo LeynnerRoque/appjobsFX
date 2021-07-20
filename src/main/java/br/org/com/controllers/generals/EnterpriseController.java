@@ -63,8 +63,23 @@ public class EnterpriseController implements Initializable {
     @FXML
     private void edit(){
         //System.out.println(tableEnterprise.getSelectionModel().getSelectedItem());
-        Enterprise e = (Enterprise) tableEnterprise.getSelectionModel().getSelectedItem();
-        System.out.println(e.getFoundationName());
+        Enterprise object = (Enterprise) tableEnterprise.getSelectionModel().getSelectedItem();
+
+        try {
+
+            Stage viewList = new Stage();
+            URL url = Paths.get("./src/main/java/br/org/com/views/forms/EnterpriseForms.fxml").toUri().toURL();
+
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            viewList.setTitle("ADD");
+            viewList.setScene(scene);
+            viewList.show();
+
+        }catch (Exception e){
+            System.out.println("Error on call page"+e.getMessage());
+        }
+
     }
 
 
