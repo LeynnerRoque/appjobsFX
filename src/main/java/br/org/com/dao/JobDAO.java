@@ -34,4 +34,15 @@ public class JobDAO implements IDAO<Job> {
 
         return job;
     }
+
+    public void update(Job job){
+        try{
+            dao.em.getTransaction().begin();
+            dao.em.merge(job);
+            dao.em.getTransaction().commit();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
 }

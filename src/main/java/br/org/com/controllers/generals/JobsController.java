@@ -1,5 +1,8 @@
 package br.org.com.controllers.generals;
 
+import br.org.com.controllers.forms.EnterpriseFormController;
+import br.org.com.controllers.forms.JobFormController;
+import br.org.com.model.Enterprise;
 import br.org.com.model.Job;
 import br.org.com.service.JobService;
 import javafx.collections.FXCollections;
@@ -47,6 +50,32 @@ public class JobsController implements Initializable {
             Scene scene = new Scene(root);
             viewList.setTitle("ADD");
             viewList.setScene(scene);
+            viewList.show();
+
+        }catch (Exception e){
+            System.out.println("Error on call page"+e.getMessage());
+        }
+    }
+
+
+    @FXML
+    private void edit(){
+
+        Job object = (Job) tableJobs.getSelectionModel().getSelectedItem();
+
+        try {
+
+            Stage viewList = new Stage();
+            URL url = Paths.get("./src/main/java/br/org/com/views/forms/JobForms.fxml").toUri().toURL();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(url);
+            Parent tableParent = loader.load();
+            Scene formEdit = new Scene(tableParent);
+
+            viewList.setTitle("EDIT");
+            JobFormController editScene = loader.getController();
+            editScene.initObject(object);
+            viewList.setScene(formEdit);
             viewList.show();
 
         }catch (Exception e){

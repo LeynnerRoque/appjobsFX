@@ -21,6 +21,50 @@ public class JobFormController implements Initializable {
     JobService service = new JobService();
     private ObservableList<Enterprise> lista = FXCollections.observableArrayList(serviceEnterprise.getAll());
 
+    Job jobEdit;
+
+    public void initObject(Job job){
+        jobEdit = job;
+        Enterprise enterprise = new Enterprise();
+        ArrayList<String> listaNames = new ArrayList<>();
+
+        if (job != null){
+            this.setJobEdit(job);
+
+            fieldTitle.setText(job.getTitle());
+            fieldDescription.setText(job.getDescription());
+            fieldSalary.setText(job.getSalary().toString());
+
+            enterprise = jobEdit.getEnterpriseId();
+
+            listaNames.add(enterprise.getFoundationName());
+            ObservableList<String> names = FXCollections.observableArrayList(listaNames);
+
+            fieldEnterprise.setItems(names);
+        }else{
+            fieldTitle.setText(null);
+            fieldDescription.setText(null);
+            fieldSalary.setText(null);
+
+            ArrayList<String> listaName = new ArrayList<>();
+
+            for (Enterprise e: serviceEnterprise.getAll()) {
+                listaNames.add(e.getFoundationName());
+                ObservableList<String> names = FXCollections.observableArrayList(listaName);
+                fieldEnterprise.setItems(names);
+            }
+
+        }
+
+    }
+
+    public void setJobEdit(Job jobEdit) {
+        this.jobEdit = jobEdit;
+    }
+
+    public Job getJobEdit() {
+        return jobEdit;
+    }
 
     @FXML
     private TextField fieldTitle;
@@ -42,27 +86,48 @@ public class JobFormController implements Initializable {
     @FXML
     private void save(){
         try {
-        System.out.println(">>"+fieldEnterprise.getSelectionModel().getSelectedItem());
-        Enterprise enterprise = serviceEnterprise.getByfoundationName(
-                fieldEnterprise.getSelectionModel().getSelectedItem().toString());
 
-        System.out.println(">>"+enterprise.getId());
+            if (getJobEdit().getId() != null){
+            Job j = getJobEdit();
+            j.setTitle(fieldTitle.getText());
+            j.setDescription(fieldDescription.getText());
+            j.setSalary(Double.parseDouble(fieldSalary.getText().toString()));
+
+                Enterprise enterprise = serviceEnterprise.getByfoundationName(
+                        fieldEnterprise.getSelectionModel().getSelectedItem().toString());
+
+            j.setEnterpriseId(enterprise);
+
+            service.update(jobEdit);
 
 
-            Job job = new Job();
-            job.setTitle(fieldTitle.getText());
-            job.setDescription(fieldDescription.getText());
-            double salario = Double.parseDouble(fieldSalary.getText());
-            job.setSalary(salario);
-            job.setEnterpriseId(enterprise);
-            service.create(job);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Edit Successful");
+                alert.setContentText("Your Enterprise was edited Successful");
+                alert.show();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Create Successful");
-            alert.setContentText("Your Enterprise was addicted Successful");
-            alert.show();
+            }else {
 
+
+                Enterprise enterprise = serviceEnterprise.getByfoundationName(
+                        fieldEnterprise.getSelectionModel().getSelectedItem().toString());
+
+
+                Job job = new Job();
+                job.setTitle(fieldTitle.getText());
+                job.setDescription(fieldDescription.getText());
+                double salario = Double.parseDouble(fieldSalary.getText());
+                job.setSalary(salario);
+                job.setEnterpriseId(enterprise);
+                service.create(job);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Create Successful");
+                alert.setContentText("Your Enterprise was addicted Successful");
+                alert.show();
+            }
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("Erro>>"+e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Create Unsuccessful");

@@ -26,4 +26,8 @@ public class JobService {
     public Job getByTitle(String name){
         return dao.getByTitle(name) ;
     }
+
+    public void update(Job job){
+        dao.update(job);
+    }
 }

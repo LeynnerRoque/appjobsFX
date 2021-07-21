@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.org.com.controllers.generals.JobsController">
    <children>
@@ -15,5 +16,10 @@
         </columns>
       </TableView>
       <Button layoutX="35.0" layoutY="49.0" mnemonicParsing="false" onAction="#addNew" style="-fx-background-color: LIMEGREEN;" text="+" textFill="#eeeeee" />
+      <Button layoutX="67.0" layoutY="49.0" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: ORANGE;" text="*" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
