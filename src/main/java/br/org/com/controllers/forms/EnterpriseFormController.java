@@ -62,8 +62,9 @@ public class EnterpriseFormController implements Initializable {
             Enterprise editada = getEnterpriseEdit();
             if (getEnterpriseEdit().getId() != null){
 
-                System.out.println(editada.getFoundationName());
-                System.out.println(editada.getId());
+                editada.setFoundationName(fieldName.getText());
+                editada.setEmail(fieldEmail.getText());
+                editada.setPhoneNumber(fieldPhone.getText());
 
                 service.update(editada);
 
