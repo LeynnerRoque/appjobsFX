@@ -17,6 +17,30 @@ public class EnterpriseFormController implements Initializable {
 
 
     EnterpriseService service = new EnterpriseService();
+    Enterprise enterpriseEdit;
+
+
+    public void initObject(Enterprise e){
+        enterpriseEdit = e;
+        this.setEnterpriseEdit(e);
+        if (e != null){
+            fieldName.setText(e.getFoundationName());
+            fieldEmail.setText(e.getEmail());
+            fieldPhone.setText(e.getPhoneNumber());
+        }else{
+            fieldName.setText(null);
+            fieldEmail.setText(null);
+            fieldPhone.setText(null);
+        }
+    }
+
+    public void setEnterpriseEdit(Enterprise enterpriseEdit) {
+        this.enterpriseEdit = enterpriseEdit;
+    }
+
+    public Enterprise getEnterpriseEdit() {
+        return enterpriseEdit;
+    }
 
     @FXML
     private TextField fieldName;
@@ -33,20 +57,35 @@ public class EnterpriseFormController implements Initializable {
 
     @FXML
     private void create(){
-        Enterprise enterprise = new Enterprise();
-
-        enterprise.setFoundationName(fieldName.getText());
-        enterprise.setEmail(fieldEmail.getText());
-        enterprise.setPhoneNumber(fieldPhone.getText());
 
         try {
-            service.create(enterprise);
+            Enterprise editada = getEnterpriseEdit();
+            if (getEnterpriseEdit().getId() != null){
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Create Successful");
-            alert.setContentText("Your Enterprise was addicted Successful");
-            alert.show();
+                System.out.println(editada.getFoundationName());
+                System.out.println(editada.getId());
 
+                service.update(editada);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Edit Successful");
+                alert.setContentText("Your Enterprise was edited Successful");
+                alert.show();
+            }else {
+
+                Enterprise enterprise = new Enterprise();
+
+                enterprise.setFoundationName(fieldName.getText());
+                enterprise.setEmail(fieldEmail.getText());
+                enterprise.setPhoneNumber(fieldPhone.getText());
+
+                service.create(enterprise);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Create Successful");
+                alert.setContentText("Your Enterprise was addicted Successful");
+                alert.show();
+            }
         }catch (Exception e){
 
             System.out.println("Error in addicted");
@@ -59,6 +98,8 @@ public class EnterpriseFormController implements Initializable {
         }
 
     }
+
+
 
     @FXML
     private void cancel(ActionEvent event){

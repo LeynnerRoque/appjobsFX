@@ -12,6 +12,11 @@ public class EnterpriseService {
     public Boolean create(Enterprise enterprises){
 
         try {
+            if(enterprises.getId() != null){
+                enterpriseDAO.create(enterprises);
+            }else{
+                enterpriseDAO.create(enterprises);
+            }
             enterpriseDAO.create(enterprises);
             return true;
 
@@ -29,5 +34,9 @@ public class EnterpriseService {
 
     public Enterprise getByfoundationName(String name){
         return enterpriseDAO.getByFoundationName(name);
+    }
+
+    public void update(Enterprise enterprise){
+        enterpriseDAO.update(enterprise);
     }
 }

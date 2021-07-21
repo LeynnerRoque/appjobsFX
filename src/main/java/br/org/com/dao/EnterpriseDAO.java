@@ -15,7 +15,6 @@ public class EnterpriseDAO implements IDAO<Enterprise> {
         dao.em.getTransaction().begin();
         dao.em.persist(enterprises);
         dao.em.getTransaction().commit();
-
     }
 
     @Override
@@ -34,4 +33,17 @@ public class EnterpriseDAO implements IDAO<Enterprise> {
         Enterprise e = query.getSingleResult();
         return e;
     }
+
+
+    public void update(Enterprise enterprise){
+        try{
+            dao.em.getTransaction().begin();
+            dao.em.merge(enterprise);
+            dao.em.getTransaction().commit();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 }

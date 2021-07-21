@@ -1,5 +1,6 @@
 package br.org.com.controllers.generals;
 
+import br.org.com.controllers.forms.EnterpriseFormController;
 import br.org.com.model.Enterprise;
 import br.org.com.service.EnterpriseService;
 import javafx.collections.FXCollections;
@@ -61,7 +62,7 @@ public class EnterpriseController implements Initializable {
     }
 
     @FXML
-    private void edit(){
+    private void edit() {
         //System.out.println(tableEnterprise.getSelectionModel().getSelectedItem());
         Enterprise object = (Enterprise) tableEnterprise.getSelectionModel().getSelectedItem();
 
@@ -69,11 +70,15 @@ public class EnterpriseController implements Initializable {
 
             Stage viewList = new Stage();
             URL url = Paths.get("./src/main/java/br/org/com/views/forms/EnterpriseForms.fxml").toUri().toURL();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(url);
+            Parent tableParent = loader.load();
+            Scene formEdit = new Scene(tableParent);
 
-            Parent root = FXMLLoader.load(url);
-            Scene scene = new Scene(root);
-            viewList.setTitle("ADD");
-            viewList.setScene(scene);
+            viewList.setTitle("EDIT");
+            EnterpriseFormController editScene = loader.getController();
+            editScene.initObject(object);
+            viewList.setScene(formEdit);
             viewList.show();
 
         }catch (Exception e){
