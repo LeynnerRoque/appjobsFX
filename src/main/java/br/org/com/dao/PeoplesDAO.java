@@ -27,4 +27,10 @@ public class PeoplesDAO implements IDAO<Peoples> {
     public List<Peoples> getAll() {
         return dao.em.createQuery("SELECT p FROM Peoples p").getResultList();
     }
+
+    public void update(Peoples peoples){
+        dao.em.getTransaction().begin();
+        dao.em.merge(peoples);
+        dao.em.getTransaction().commit();
+    }
 }

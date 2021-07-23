@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.org.com.controllers.generals.PeopleController">
 
@@ -18,6 +19,11 @@
             </columns>
         </TableView>
       <Button layoutX="19.0" layoutY="32.0" mnemonicParsing="false" onAction="#addNew" style="-fx-background-color: LIMEGREEN;" text="+" textFill="#eeecec" />
+      <Button layoutX="54.0" layoutY="31.0" mnemonicParsing="false" onAction="#edit" prefHeight="17.0" prefWidth="27.0" style="-fx-background-color: ORANGE;" text="*" textAlignment="CENTER" textFill="#f8f5f5">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 
 

@@ -1,5 +1,6 @@
 package br.org.com.controllers.generals;
 
+import br.org.com.controllers.forms.PeopleFormController;
 import br.org.com.model.Enterprise;
 import br.org.com.model.Peoples;
 import br.org.com.service.PeoplesService;
@@ -61,6 +62,37 @@ public class PeopleController implements Initializable {
             System.out.println("Error on call page"+e.getMessage());
         }
     }
+
+
+
+    @FXML
+    private void edit() {
+        //System.out.println(tableEnterprise.getSelectionModel().getSelectedItem());
+        Peoples object = (Peoples) tablePeoples.getSelectionModel().getSelectedItem();
+
+        try {
+
+            Stage viewList = new Stage();
+            URL url = Paths.get("./src/main/java/br/org/com/views/forms/PeopleForms.fxml").toUri().toURL();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(url);
+            Parent tableParent = loader.load();
+            Scene formEdit = new Scene(tableParent);
+
+            viewList.setTitle("EDIT");
+            PeopleFormController editScene = loader.getController();
+            editScene.initObject(object);
+            viewList.setScene(formEdit);
+            viewList.show();
+
+        }catch (Exception e){
+            System.out.println("Error on call page"+e.getMessage());
+        }
+
+    }
+
+
+
 
 
     @Override

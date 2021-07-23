@@ -22,4 +22,17 @@ public class PeoplesService {
         return dao.getAll();
     }
 
+    public Boolean update(Peoples peoples){
+        try{
+        dao.update(peoples);
+        return true;
+        }catch (Exception e){
+            System.out.println("Error on update Object"+e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
 }
