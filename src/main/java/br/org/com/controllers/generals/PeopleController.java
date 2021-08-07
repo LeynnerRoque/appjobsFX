@@ -82,6 +82,7 @@ public class PeopleController implements Initializable {
             viewList.setTitle("EDIT");
             PeopleFormController editScene = loader.getController();
             editScene.initObject(object);
+            editScene.setPeople(object);
             viewList.setScene(formEdit);
             viewList.show();
 

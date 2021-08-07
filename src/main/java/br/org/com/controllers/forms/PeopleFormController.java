@@ -120,61 +120,73 @@ public class PeopleFormController implements Initializable {
     @FXML
     private void save(){
 
-        if (getPeople().getId() != null) {
+        try{
+
+
             Peoples p = getPeople();
-            p.setName(fieldName.getText());
-            p.setEmail(fieldEmail.getText());
-            p.setPhone(fieldPhone.getText());
-            p.setAge(Integer.parseInt(fieldAge.getText()));
-            p.setRegionName(fieldRegion.getText());
-
-            Location location = serviceLocal.getByStreet(comboLocal.getSelectionModel().getSelectedItem().toString());
-            Job job = serviceJob.getByTitle(comboJob.getSelectionModel().getSelectedItem().toString());
-
-            p.setLocationId(location);
-            p.setJobId(job);
-
-           if( service.update(p) == true){
-               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-               alert.setTitle("Create Successful");
-               alert.setContentText("Your People was edited Successful");
-               alert.show();
-           }else{
-               Alert alert = new Alert(Alert.AlertType.ERROR);
-               alert.setTitle("Create Successful");
-               alert.setContentText("Your People not edited");
-               alert.show();
-           }
+            if (p != null) {
+                Location location = serviceLocal.getByStreet(comboLocal.getSelectionModel().getSelectedItem().toString());
+                Job job = serviceJob.getByTitle(comboJob.getSelectionModel().getSelectedItem().toString());
+                p.setName(fieldName.getText());
+                p.setEmail(fieldEmail.getText());
+                p.setPhone(fieldPhone.getText());
+                p.setAge(Integer.parseInt(fieldAge.getText()));
+                p.setRegionName(fieldRegion.getText());
 
 
+                p.setLocationId(location);
+                p.setJobId(job);
 
-        }else {
+                if( service.update(p) == true){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Create Successful");
+                    alert.setContentText("Your People was edited Successful");
+                    alert.show();
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Create Successful");
+                    alert.setContentText("Your People not edited");
+                    alert.show();
+                }
 
-            Location location = serviceLocal.getByStreet(comboLocal.getSelectionModel().getSelectedItem().toString());
-            Job job = serviceJob.getByTitle(comboJob.getSelectionModel().getSelectedItem().toString());
 
-            Peoples peoples = new Peoples();
-            peoples.setName(fieldName.getText());
-            peoples.setGender(comboGender.getSelectionModel().getSelectedItem().toString());
-            peoples.setAge(Integer.parseInt(fieldAge.getText()));
-            peoples.setEmail(fieldEmail.getText());
-            peoples.setRegionName(fieldRegion.getText());
-            peoples.setLocationId(location);
-            peoples.setJobId(job);
 
-            if (service.create(peoples) == true) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Create Successful");
-                alert.setContentText("Your People was addicted Successful");
-                alert.show();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Create Successful");
-                alert.setContentText("Your People not addicted");
-                alert.show();
+            }else {
+
+                Location location = serviceLocal.getByStreet(comboLocal.getSelectionModel().getSelectedItem().toString());
+                Job job = serviceJob.getByTitle(comboJob.getSelectionModel().getSelectedItem().toString());
+
+                Peoples peoples = new Peoples();
+                peoples.setName(fieldName.getText());
+                peoples.setGender(comboGender.getSelectionModel().getSelectedItem().toString());
+                peoples.setAge(Integer.parseInt(fieldAge.getText()));
+                peoples.setEmail(fieldEmail.getText());
+                peoples.setRegionName(fieldRegion.getText());
+                peoples.setLocationId(location);
+                peoples.setJobId(job);
+
+                if (service.create(peoples) == true) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Create Successful");
+                    alert.setContentText("Your People was addicted Successful");
+                    alert.show();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Unsuccessful");
+                    alert.setContentText("Your People not addicted");
+                    alert.show();
+                }
+
             }
 
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error on Persist Data");
+            alert.setContentText("Your People not addicted");
+            alert.show();
         }
+
 
     }
 

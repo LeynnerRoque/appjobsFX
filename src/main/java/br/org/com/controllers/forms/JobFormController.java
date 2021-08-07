@@ -86,9 +86,8 @@ public class JobFormController implements Initializable {
     @FXML
     private void save(){
         try {
-
-            if (getJobEdit().getId() != null){
             Job j = getJobEdit();
+            if (j != null){
             j.setTitle(fieldTitle.getText());
             j.setDescription(fieldDescription.getText());
             j.setSalary(Double.parseDouble(fieldSalary.getText().toString()));

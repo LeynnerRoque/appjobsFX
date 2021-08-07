@@ -60,7 +60,7 @@ public class EnterpriseFormController implements Initializable {
 
         try {
             Enterprise editada = getEnterpriseEdit();
-            if (getEnterpriseEdit().getId() != null){
+            if (editada != null){
 
                 editada.setFoundationName(fieldName.getText());
                 editada.setEmail(fieldEmail.getText());
