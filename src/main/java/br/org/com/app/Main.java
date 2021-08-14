@@ -16,8 +16,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
                try {
                     URL url = Paths.get("./src/main/java//br/org/com/views/Login.fxml").toUri().toURL();
+                 //  URL url = Paths.get("./src/main/java//br/org/com/views/generals/comboTeste.fxml").toUri().toURL();
 
-                    Parent root = FXMLLoader.load(url);
+
+                   Parent root = FXMLLoader.load(url);
                     Scene scene = new Scene(root);
                     primaryStage.setTitle("Login");
                     primaryStage.setScene(scene);

@@ -83,6 +83,7 @@ public class JobFormController implements Initializable {
     private Button buttonCancel;
 
 
+
     @FXML
     private void save(){
         try {
@@ -143,6 +144,9 @@ public class JobFormController implements Initializable {
     }
 
 
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -152,6 +156,7 @@ public class JobFormController implements Initializable {
             listaNames.add(e.getFoundationName());
             ObservableList<String> names = FXCollections.observableArrayList(listaNames);
             fieldEnterprise.setItems(names);
+            
         }
 
     }
