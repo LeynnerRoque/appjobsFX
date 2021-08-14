@@ -45,13 +45,6 @@ public class ComboTesteController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 System.out.println("Digitou:"+newValue);
-               /* for (int i = 0; i < comboBox.getItems().size(); i++) {
-                    if (comboBox.getItems().get(i).toString().contains(newValue)){
-                        System.out.println("Achou>>"+comboBox.getItems().get(i));
-                        comboBox.getItems().clear();
-                        comboBox.setVisible(true);
-                    }
-                }*/
 
                 for (Enterprise e: serviceEnterprise.getAll()) {
                     if (e.getFoundationName().toLowerCase(Locale.ROOT).contains(newValue)){
@@ -63,10 +56,32 @@ public class ComboTesteController implements Initializable {
                         comboBox.setItems(carregaNovo);
                         comboBox.show();
                     }
+                    if(newValue.length() == 0){
+                        System.out.println("Chegou Aqui");
+                        for (Enterprise o: serviceEnterprise.getAll()) {
+                            ArrayList<String> novoCombo2 = new ArrayList<>();
+                            novoCombo2.add(o.getFoundationName());
+                            ObservableList<String> carregaNovo2 = FXCollections.observableArrayList(novoCombo2);
+                            comboBox.getItems().addAll(carregaNovo2);
+                            comboBox.show();
+                        }
+
+                    }
                 }
 
             }
         });
+
+       /* if(comboBox.getEditor().getText().isEmpty()){
+            for (Enterprise e: serviceEnterprise.getAll()) {
+                System.out.println("Chegou Aqui");
+                ArrayList<String> novoCombo = new ArrayList<>();
+                novoCombo.add(e.getFoundationName());
+                ObservableList<String> carregaNovo = FXCollections.observableArrayList(novoCombo);
+                comboBox.setItems(carregaNovo);
+                comboBox.show();
+            }
+        }*/
 
         return comboBox;
     }

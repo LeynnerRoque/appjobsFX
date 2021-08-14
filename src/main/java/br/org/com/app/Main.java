@@ -15,8 +15,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
                try {
-                    URL url = Paths.get("./src/main/java//br/org/com/views/Login.fxml").toUri().toURL();
-                 //  URL url = Paths.get("./src/main/java//br/org/com/views/generals/comboTeste.fxml").toUri().toURL();
+                   URL url = Paths.get("./src/main/java//br/org/com/views/Login.fxml").toUri().toURL();
+                   //URL url = Paths.get("./src/main/java//br/org/com/views/generals/comboTeste.fxml").toUri().toURL();
 
 
                    Parent root = FXMLLoader.load(url);
