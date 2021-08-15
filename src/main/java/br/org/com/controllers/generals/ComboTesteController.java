@@ -57,6 +57,7 @@ public class ComboTesteController implements Initializable {
                         comboBox.show();
                     }
                     if(newValue.length() == 0){
+                        comboBox.getItems().clear();
                         System.out.println("Chegou Aqui");
                         for (Enterprise o: serviceEnterprise.getAll()) {
                             ArrayList<String> novoCombo2 = new ArrayList<>();
