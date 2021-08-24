@@ -46,10 +46,12 @@ public class ComboTesteController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 System.out.println("Digitou:"+newValue);
 
+                ArrayList<String> novoCombo = new ArrayList<>();
+                ArrayList<String> novoCombo2 = new ArrayList<>();
+
                 for (Enterprise e: serviceEnterprise.getAll()) {
                     if (e.getFoundationName().toLowerCase(Locale.ROOT).contains(newValue)){
                         System.out.println("Achou>>"+e.getFoundationName());
-                        ArrayList<String> novoCombo = new ArrayList<>();
                         comboBox.getItems().clear();
                         novoCombo.add(e.getFoundationName());
                         ObservableList<String> carregaNovo = FXCollections.observableArrayList(novoCombo);
@@ -59,9 +61,7 @@ public class ComboTesteController implements Initializable {
                     if(newValue.length() == 0){
                         comboBox.getItems().clear();
                         comboBox.hide();
-                        System.out.println("Chegou Aqui");
                         for (Enterprise o: serviceEnterprise.getAll()) {
-                            ArrayList<String> novoCombo2 = new ArrayList<>();
                             novoCombo2.add(o.getFoundationName());
                             ObservableList<String> carregaNovo2 = FXCollections.observableArrayList(novoCombo2);
                             comboBox.getItems().addAll(carregaNovo2);
