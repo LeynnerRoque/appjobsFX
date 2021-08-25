@@ -47,10 +47,9 @@ public class ComboTesteController implements Initializable {
                 System.out.println("Digitou:"+newValue);
 
                 ArrayList<String> novoCombo = new ArrayList<>();
-                ArrayList<String> novoCombo2 = new ArrayList<>();
 
                 for (Enterprise e: serviceEnterprise.getAll()) {
-                    if (e.getFoundationName().toLowerCase(Locale.ROOT).contains(newValue)){
+                    if ( e.getFoundationName().toLowerCase(Locale.ROOT).contains(newValue.toLowerCase(Locale.ROOT))){
                         System.out.println("Achou>>"+e.getFoundationName());
                         comboBox.getItems().clear();
                         novoCombo.add(e.getFoundationName());
@@ -58,32 +57,11 @@ public class ComboTesteController implements Initializable {
                         comboBox.setItems(carregaNovo);
                         comboBox.show();
                     }
-                    if(newValue.length() == 0){
-                        comboBox.getItems().clear();
-                        comboBox.hide();
-                        for (Enterprise o: serviceEnterprise.getAll()) {
-                            novoCombo2.add(o.getFoundationName());
-                            ObservableList<String> carregaNovo2 = FXCollections.observableArrayList(novoCombo2);
-                            comboBox.getItems().addAll(carregaNovo2);
-                            comboBox.show();
-                        }
-
-                    }
                 }
 
             }
         });
 
-       /* if(comboBox.getEditor().getText().isEmpty()){
-            for (Enterprise e: serviceEnterprise.getAll()) {
-                System.out.println("Chegou Aqui");
-                ArrayList<String> novoCombo = new ArrayList<>();
-                novoCombo.add(e.getFoundationName());
-                ObservableList<String> carregaNovo = FXCollections.observableArrayList(novoCombo);
-                comboBox.setItems(carregaNovo);
-                comboBox.show();
-            }
-        }*/
 
         return comboBox;
     }
