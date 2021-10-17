@@ -1,5 +1,6 @@
 package br.org.com.controllers;
 
+import br.org.com.mail.MailController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
+
+    MailController controller = new MailController();
 
 
     @FXML
@@ -81,6 +84,12 @@ public class HomeController implements Initializable {
         rt.exec("open " + url);
 
 
+    }
+
+
+    @FXML
+    private void sendMail(){
+        controller.sendMail();
     }
 
 

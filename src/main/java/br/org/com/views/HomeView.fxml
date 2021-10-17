@@ -12,6 +12,7 @@
             <Button layoutX="229.0" layoutY="132.0" mnemonicParsing="false" onAction="#directJobs" prefHeight="114.0" prefWidth="142.0" text="Jobs" />
             <Button layoutX="416.0" layoutY="132.0" mnemonicParsing="false" onAction="#directPeoples" prefHeight="114.0" prefWidth="142.0" text="Peoples" />
             <Button layoutX="58.0" layoutY="14.0" mnemonicParsing="false" onAction="#openNet" text="Bronwser" />
+            <Button layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendMail" prefHeight="25.0" prefWidth="128.0" text="Send Mail" />
          </children>
       </Pane>
    </children>
