@@ -30,8 +30,8 @@ public class MailController {
                 new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication()
                     {
-                        return new PasswordAuthentication("teambuscavet@gmail.com",
-                                "ajmn0114");
+                        return new PasswordAuthentication("SENT_EMAIL@gmail.com",
+                                "PASSWORD_MAIL_APP");
                     }
                 });
 
@@ -40,11 +40,11 @@ public class MailController {
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("teambuscavet@gmail.com"));
+            message.setFrom(new InternetAddress("SENT_MAIL@gmail.com"));
             //Remetente
 
             Address[] toUser = InternetAddress //Destinatário(s)
-                    .parse("leynnerroque@gmail.com, leynnerroque@yahoo.com.br");
+                    .parse("MAIL_SAMPLE1@gmail.com, MAIL_SAMPLE2@yahoo.com.br");
 
             message.setRecipients(Message.RecipientType.TO, toUser);
             message.setSubject("Enviando email com JavaMail");//Assunto
