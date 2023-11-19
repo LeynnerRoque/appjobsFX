@@ -14,9 +14,9 @@
         <class>br.org.com.model.Peoples</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/appjobs"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.user" value="USERNAME_DATABASE"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="roque1989"/>
+            <property name="javax.persistence.jdbc.password" value="PASSWORD_DATABASE"/>
         </properties>
     </persistence-unit>
 </persistence>
